@@ -14,18 +14,18 @@ names(dt)<-c("Date","Time","Global_active_power","Global_reactive_power","Voltag
 # draw 4 plot and save result as png file in working directory
 dt$sdate<-paste(dt$Date,dt$Time,sep=" ")
 dt$ddate<-strptime(dt$sdate,'%d/%m/%Y %H:%M:%S')
-png(file="./plot4.png")
+png(file="./plot4.png",width=480,height=480)
 # split plot space into 2 columns and 2 rows
 par(mfrow=c(2,2))  
 # graph 1
-with(dt,plot(dt$ddate,dt$Global_active_power,type="l",ylab="Global Active Power",xlab=""))
+with(dt,plot(dt$ddate,as.numeric(dt$Global_active_power),type="l",ylab="Global Active Power",xlab=""))
 # graph 2
-with(dt,plot(dt$ddate,dt$Voltage,type="l",ylab="Voltage",xlab="datetime"))
+with(dt,plot(dt$ddate,as.numeric(dt$Voltage),type="l",ylab="Voltage",xlab="datetime"))
 # graph 3
-with(dt,plot(dt$ddate,dt$Sub_metering_1,type="l",ylab="Energy sub metering",xlab=""))
-with(dt,lines(dt$ddate,dt$Sub_metering_2,type="l",col="red"))
-with(dt,lines(dt$ddate,dt$Sub_metering_3,type="l",col="blue"))
+with(dt,plot(dt$ddate,as.numeric(dt$Sub_metering_1),type="l",ylab="Energy sub metering",xlab=""))
+with(dt,lines(dt$ddate,as.numeric(dt$Sub_metering_2),type="l",col="red"))
+with(dt,lines(dt$ddate,as.numeric(dt$Sub_metering_3),type="l",col="blue"))
 legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col = c("black","red","blue"),lty = "solid",bty = "n")
 # graph 4
-with(dt,plot(dt$ddate,dt$Global_reactive_power,type="l",ylab="Global_reactive_power",xlab="datetime"))
+with(dt,plot(dt$ddate,as.numeric(dt$Global_reactive_power),type="l",ylab="Global_reactive_power",xlab="datetime"))
 dev.off()
