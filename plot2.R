@@ -15,8 +15,8 @@ names(dt)<-c("Date","Time","Global_active_power","Global_reactive_power","Voltag
 # draw plot and save as png file in working directory
 dt$sdate<-paste(dt$Date,dt$Time,sep=" ")
 dt$ddate<-strptime(dt$sdate,'%d/%m/%Y %H:%M:%S')
-png(file="./plot2.png")
-with(dt,plot(dt$ddate,dt$Global_active_power,type="l",ylab="Global Active Power (kilowatts)",xlab=""))
+png(file="./plot2.png",width=480,height=480)
+with(dt,plot(dt$ddate,as.numeric(dt$Global_active_power),type="l",ylab="Global Active Power (kilowatts)",xlab=""))
 dev.off()
 
 
