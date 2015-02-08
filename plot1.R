@@ -11,7 +11,7 @@ names(dt)<-c("Date","Time","Global_active_power","Global_reactive_power","Voltag
 
 ## Plot 1 - histogram of Global_active_power
 # draw plot and save as png file in working directory
-png(file="./plot1.png")
+png(file="./plot1.png",width=480,height=480)
 hist(as.numeric(dt$Global_active_power),col="red",xlab="Global Active Power (kilowatts)",main="Global Active Power",ylim=c(0,1200))
 dev.off()
 
