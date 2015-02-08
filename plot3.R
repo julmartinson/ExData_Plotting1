@@ -16,9 +16,9 @@ names(dt)<-c("Date","Time","Global_active_power","Global_reactive_power","Voltag
 dt$sdate<-paste(dt$Date,dt$Time,sep=" ")
 dt$ddate<-strptime(dt$sdate,'%d/%m/%Y %H:%M:%S')
 png(file="./plot3.png")
-with(dt,plot(dt$ddate,dt$Sub_metering_1,type="l",ylab="Energy sub metering",xlab=""))
-with(dt,lines(dt$ddate,dt$Sub_metering_2,type="l",col="red"))
-with(dt,lines(dt$ddate,dt$Sub_metering_3,type="l",col="blue"))
+with(dt,plot(dt$ddate,as.numeric(dt$Sub_metering_1),type="l",ylab="Energy sub metering",xlab=""))
+with(dt,lines(dt$ddate,as.numeric(dt$Sub_metering_2),type="l",col="red"))
+with(dt,lines(dt$ddate,as.numeric(dt$Sub_metering_3),type="l",col="blue"))
 # add legend to the plot
 legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col = c("black","red","blue"),lty = "solid")
 dev.off()
